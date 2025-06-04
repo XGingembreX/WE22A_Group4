@@ -1,0 +1,109 @@
+/* this is the background of the page and the general layout*/
+body {
+    background-color: whitesmoke;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* This is the header and the navigation */
+header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: #4d5cdf;
+}
+
+nav {
+    display:flex;
+    gap: 10px;
+    
+}
+
+.button {
+    padding:5px 10px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-weight: 300;
+    font-size: large;
+
+}
+
+/* The dsplay of any of the links in the page */
+a {
+    color: black;
+    text-decoration: none;
+    size: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:auto;
+    
+}
+
+.text-box {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: rgba(222, 222, 247, 0.712);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* What the table data will look like for the workouts */
+.WorkoutT {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* the page will scroll to the content that is connected to the button that you click on */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hidden Content Section & Button to release content*/
+
+.hidden-section {
+    display: none;
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+
+.Button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+.Button:hover {
+    background-color: rgba(245, 245, 245, 0.205);
+  }
+
+  /* back to the top button*/
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #4d5cdf;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+#topBtn:hover {
+    background-color: #555;
+  }

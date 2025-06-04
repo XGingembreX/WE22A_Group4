@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Trivia Game</title>
+  <style>
+    /* --- Theme Variables for Light/Dark Mode --- */
+    :root {
+      --bg-color: #f0f8ff;
+      --text-color: #000;
+      --card-color: white;
+      --primary-color: #4d5cdf;
+      --primary-dark: #4d5cdf;
+      --option-bg: #e3f2fd;
+      --option-hover: #bbdefb;
+      --correct-color: #a1e3a1;
+      --correct-border: #2e7d32;
+      --wrong-color: #f5a1a1;
+      --wrong-border: #c62828;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --card-color: #1e1e1e;
+      --option-bg: #263238;
+      --option-hover: #455a64;
+    }
+
+    /* --- Global Styling --- */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: var(--card-color);
+      border-radius: 10px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    /* --- User Setup Section --- */
+    #user-setup input {
+      padding: 10px;
+      width: 70%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    #user-setup button {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+    }
+
+    #user-setup button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* --- Question Area --- */
+    #question {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      min-height: 60px;
+    }
+
+    #answers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .answer-btn {
+      padding: 12px;
+      background-color: var(--option-bg);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      background-color: var(--option-hover);
+    }
+
+    .answer-btn.selected {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: #1565c0;
+    }
+
+    .correct {
+      background-color: var(--correct-color);
+      border-color: var(--correct-border);
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    .wrong {
+      background-color: var(--wrong-color);
+      border-color: var(--wrong-border);
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    #next-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    #next-btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* --- Top Bar (Score, Timer, Dark Mode) --- */
+    #timer, #score-display {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    #top-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #dark-mode-toggle {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      user-select: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+
+    #dark-mode-toggle:hover {
+      color: var(--primary-dark);
+    }
+
+    /* --- Final Result --- */
+    #result {
+      font-size: 1.3rem;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    /* --- High Score Box --- */
+    #highscore-box {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* --- Go Back Button --- */
+    #back-home-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    #back-home-btn:hover {
+      background-color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏋️ Fitness Trivia 🧠</h1>
+
+    <!-- User setup section -->
+    <div id="user-setup">
+      <input type="text" id="username" placeholder="Enter your name" autocomplete="off" />
+      <button id="start-btn">Start Game</button>
+    </div>
+
+    <!-- Game UI -->
+    <div id="game-box" class="hidden">
+      <div id="top-bar">
+        <div id="timer">⏱ 15</div>
+        <div id="score-display">Score: 0</div>
+        <button id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+      </div>
+      <div id="question">Loading question...</div>
+      <div id="answers"></div>
+      <button id="next-btn" class="hidden" disabled>Next</button>
+    </div>
+
+    <!-- Final score display -->
+    <div id="result" class="hidden"></div>
+
+    <!-- Go Back Home Button (hidden by default) -->
+    <a href="MiniGames.html" id="back-home-btn" class="hidden" title="Go back to Mini Games Home">⬅️ Go Back to Mini Games Home</a>
+
+    <!-- High score tracker -->
+    <div id="highscore-box">🏆 High Score: <span id="highscore">0</span></div>
+  </div>
+
+  <!-- Sound effects -->
+  <audio id="correct-sound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="wrong-sound" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg"></audio>
+
+  <script>
+    // --- Questions Array ---
+    const questions = [
+      { question: "What is the recommended daily protein intake for muscle growth?", options: ["0.8g/kg", "1.2g/kg", "1.6g/kg", "2.2g/kg"], correct: "1.6g/kg" },
+      { question: "Which exercise primarily targets the chest muscles?", options: ["Deadlift", "Squat", "Bench Press", "Pull-up"], correct: "Bench Press" },
+      { question: "What is the main benefit of HIIT workouts?", options: ["Muscle gain", "Improved flexibility", "Increased endurance", "Fat burning"], correct: "Fat burning" },
+      { question: "How many essential amino acids are there?", options: ["9", "12", "20", "5"], correct: "9" },
+      { question: "Which vitamin is primarily obtained through sunlight?", options: ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"], correct: "Vitamin D" },
+      { question: "Which macronutrient is the body’s main source of energy?", options: ["Protein", "Carbohydrates", "Fat", "Fiber"], correct: "Carbohydrates" },
+      { question: "What does BMI stand for?", options: ["Body Muscle Index", "Body Mass Index", "Bulk Mass Indicator", "Basic Mass Index"], correct: "Body Mass Index" },
+      { question: "What is the best time to stretch for flexibility?", options: ["Before workout", "After workout", "During workout", "Anytime"], correct: "After workout" },
+      { question: "Which mineral is important for muscle contraction?", options: ["Iron", "Calcium", "Zinc", "Magnesium"], correct: "Calcium" },
+      { question: "What is the ideal rest time between sets for muscle hypertrophy?", options: ["15-30 sec", "30-90 sec", "2-3 min", "Over 5 min"], correct: "30-90 sec" },
+      { question: "Which nutrient helps in the repair of tissues?", options: ["Protein", "Carbohydrates", "Fats", "Vitamins"], correct: "Protein" },
+      { question: "Which type of fat is considered healthy?", options: ["Trans fat", "Saturated fat", "Monounsaturated fat", "Hydrogenated fat"], correct: "Monounsaturated fat" }
+    ];
+
+    // --- Game State Variables ---
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 15;
+    let answered = false;
+
+    // --- DOM Elements ---
+    const usernameInput = document.getElementById('username');
+    const startBtn = document.getElementById('start-btn');
+    const gameBox = document.getElementById('game-box');
+    const questionElement = document.getElementById('question');
+    const answersElement = document.getElementById('answers');
+    const nextBtn = document.getElementById('next-btn');
+    const resultBox = document.getElementById('result');
+    const timerDisplay = document.getElementById('timer');
+    const scoreDisplay = document.getElementById('score-display');
+    const highscoreDisplay = document.getElementById('highscore');
+    const darkToggle = document.getElementById('dark-mode-toggle');
+    const userSetup = document.getElementById('user-setup');
+    const backHomeBtn = document.getElementById('back-home-btn');
+    const correctSound = document.getElementById('correct-sound');
+    const wrongSound = document.getElementById('wrong-sound');
+
+    // --- Load High Score from localStorage ---
+    let highScore = localStorage.getItem('fitnessTriviaHighScore') || 0;
+    highscoreDisplay.textContent = highScore;
+
+    // --- Dark Mode Toggle ---
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      // Change toggle icon
+      if(document.body.classList.contains('dark')) {
+        darkToggle.textContent = '☀️';
+        darkToggle.title = 'Switch to Light Mode';
+      } else {
+        darkToggle.textContent = '🌙';
+        darkToggle.title = 'Switch to Dark Mode';
+      }
+    });
+
+    // --- Start Game Handler ---
+    startBtn.addEventListener('click', () => {
+      const username = usernameInput.value.trim();
+      if (!username) {
+        alert('Please enter your name to start the game!');
+        return;
+      }
+      userSetup.classList.add('hidden');
+      gameBox.classList.remove('hidden');
+      resultBox.classList.add('hidden');
+      backHomeBtn.classList.add('hidden'); // hide the back button on new game start
+      score = 0;
+      currentQuestionIndex = 0;
+      updateScore();
+      showQuestion();
+      startTimer();
+    });
+
+    // --- Show Question ---
+    function showQuestion() {
+      answered = false;
+      nextBtn.disabled = true;
+      nextBtn.classList.add('hidden');
+      clearAnswers();
+      const currentQ = questions[currentQuestionIndex];
+      questionElement.textContent = currentQ.question;
+      currentQ.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.textContent = option;
+        btn.addEventListener('click', () => selectAnswer(btn, option));
+        answersElement.appendChild(btn);
+      });
+      timeLeft = 15;
+      updateTimerDisplay();
+    }
+
+    // --- Clear previous answers ---
+    function clearAnswers() {
+      answersElement.innerHTML = '';
+    }
+
+    // --- Select Answer ---
+    function selectAnswer(btn, selectedOption) {
+      if (answered) return;
+      answered = true;
+      clearInterval(timer);
+      nextBtn.classList.remove('hidden');
+      nextBtn.disabled = false;
+
+      // Disable all buttons
+      const buttons = document.querySelectorAll('.answer-btn');
+      buttons.forEach(b => b.disabled = true);
+
+      const correctAnswer = questions[currentQuestionIndex].correct;
+      if (selectedOption === correctAnswer) {
+        btn.classList.add('correct');
+        score++;
+        updateScore();
+        playSound(true);
+      } else {
+        btn.classList.add('wrong');
+        // Highlight correct answer
+        buttons.forEach(b => {
+          if (b.textContent === correctAnswer) {
+            b.classList.add('correct');
+          }
+        });
+        playSound(false);
+      }
+    }
+
+    // --- Update Score Display ---
+    function updateScore() {
+      scoreDisplay.textContent = `Score: ${score}`;
+    }
+
+    // --- Timer Functions ---
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timesUp();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      timerDisplay.textContent = `⏱ ${timeLeft}`;
+    }
+
+    // --- Handle Time Up ---
+    function timesUp() {
+      answered = true;
+      nextBtn.classList.remove('hidden');
+      nextBtn.disabled = false;
+
+      // Disable buttons & show correct answer
+      const buttons = document.querySelectorAll('.answer-btn');
+      buttons.forEach(b => {
+        b.disabled = true;
+        if (b.textContent === questions[currentQuestionIndex].correct) {
+          b.classList.add('correct');
+        }
+      });
+
+      playSound(false);
+    }
+
+    // --- Next Question Handler ---
+    nextBtn.addEventListener('click', () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex >= questions.length) {
+        endGame();
+      } else {
+        showQuestion();
+        startTimer();
+      }
+    });
+
+    // --- End Game ---
+    function endGame() {
+      clearInterval(timer);
+      gameBox.classList.add('hidden');
+      resultBox.classList.remove('hidden');
+      backHomeBtn.classList.remove('hidden'); // Show the go back button
+
+      resultBox.textContent = `🎉 Well done, ${usernameInput.value}! Your final score is ${score} / ${questions.length}.`;
+
+      // Update high score if needed
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('fitnessTriviaHighScore', highScore);
+        highscoreDisplay.textContent = highScore;
+        resultBox.textContent += " 🏆 New High Score!";
+      }
+    }
+
+    // --- Play Sound --- 
+    // This was taken out as when the game was tested it was found that the sound can be annoying. But it was kept since it can  be added by just removing the comments
+ /*   function playSound(correct) {
+      if (correct) {
+        correctSound.currentTime = 0;
+        correctSound.play();
+      } else {
+        wrongSound.currentTime = 0;
+        wrongSound.play();
+      }
+    } */
+  </script>
+</body>
+</html>
+

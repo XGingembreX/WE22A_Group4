@@ -1,0 +1,152 @@
+/* This is the header and the navigation */
+header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: #4d5cdf;
+}
+
+nav {
+    display:flex;
+    gap: 10px;
+    
+}
+
+.button {
+    padding:5px 10px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-weight: 300;
+    font-size: large;
+
+}
+
+
+
+/* --- Go Back Button --- */
+#back-home-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+a {
+    color: black;
+    text-decoration: none;
+    size: 20px;
+}
+
+
+* { /*used to style every element on the page as regarded a univeral styler*/
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+/* this is the background of the page and the general layout*/
+body {
+    background-color: whitesmoke;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+  justify-items: center;
+}
+    .container { /*styling all the elements on the webpage to group it under one style structure*/
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      justify-content: center;
+    
+    }
+
+    .cards {    /*stlyes the structure of the image and the button links attached*/
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: calc(50% - 10px);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .cards:hover {  /*styles the outcome of the hovering effect with a mouse*/
+      transform: scale(1.02);
+    }
+
+    .cards img {    /*styles the images layout*/
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cards button { /*button styling*/
+      background-color: #4d5cdf;
+      color: #fff;
+      border: none;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    } 
+
+    .cards button:hover {   /*the colour the button will change to when you hover on it*/
+      background-color: #4d5cdf;
+    }
+
+    @media (max-width: 768px) { /*ensuring the images and the buttons display are responsive*/
+      .cards {
+        width: 100%;
+      }
+    }
+
+    h1{ /*styling the heading output*/
+        text-align: center;
+        font-size: 30px;
+        margin-top: 20px;
+        color: black;
+        text-decoration: underline;
+    }
+
+    :root {
+      --bg-color: #f0f8ff;
+      --text-color: #000;
+      --card-color: white;
+      --primary-color: #4d5cdf;
+      --primary-dark: #4d5cdf;
+      --option-bg: #e3f2fd;
+      --option-hover: #bbdefb;
+      --correct-color: #a1e3a1;
+      --correct-border: #2e7d32;
+      --wrong-color: #f5a1a1;
+      --wrong-border: #c62828;
+    }
+
+body.dark {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --card-color: #1e1e1e;
+      --option-bg: #263238;
+      --option-hover: #455a64;
+    }

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hangman Game</title>
+  <style>
+    /* This is the header and the navigation */
+header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: #4d5cdf;
+}
+
+nav {
+    display:flex;
+    gap: 10px;
+    
+}
+
+.button {
+    padding:5px 10px;
+    cursor: pointer;
+    border: none;
+    font-weight: 300;
+    font-size: large;
+    background-color: transparent;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    size: 20px;
+}
+
+body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+#wordDisplay {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin: 20px 0;
+    }
+
+#keyboard button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+#status {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: green;
+    }
+
+#hangman {
+      font-size: 1.2rem;
+      color: red;
+    }
+
+:root {
+      --bg-color: #f0f8ff;
+      --text-color: #000;
+      --card-color: white;
+      --primary-color: #4d5cdf;
+      --primary-dark: #4d5cdf;
+      --option-bg: #e3f2fd;
+      --option-hover: #bbdefb;
+      --correct-color: #a1e3a1;
+      --correct-border: #2e7d32;
+      --wrong-color: #f5a1a1;
+      --wrong-border: #c62828;
+    }
+
+body.dark {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --card-color: #1e1e1e;
+      --option-bg: #263238;
+      --option-hover: #455a64;
+    }
+
+.center {
+  justify-items: center;
+}
+
+.container {
+      background: var(--card-color);
+      border-radius: 10px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+.cards {    /*stlyes the structure of the image and the button links attached*/
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: calc(90% - 10px);
+      text-align: center;
+      transition: transform 0.3s;
+      padding:20px;
+    }
+
+/* --- User Setup Section --- */
+#user-setup input {
+      padding: 10px;
+      width: 70%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+#user-setup button {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+    }
+
+#user-setup button:hover {
+      background-color: var(--primary-dark);
+    }
+
+/* --- Go Back Button --- */
+#back-home-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    #playAgainBtn {
+            margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="cards">
+  <h1>Hangman Game</h1>
+  <p>This game is focused on Fitness related words.</p>
+  <br>
+  <h2>Guess the word:</h2>
+  <div id="wordDisplay">_ _ _ _ _</div>
+  <br>
+  <div id="hangman">Mistakes: 0</div>
+  <br><hr>
+  <div id="keyboard"></div>
+  <div id="status"></div>
+  <!-- Score Display -->
+<div id="score">Score: 0</div>
+
+<!-- Play Again Button -->
+<button class="button" id="playAgainBtn" style="display:none; margin-top: 20px;">Play Again</button>
+
+      <!-- Go Back Home Button (hidden by default) -->
+       <button class="button">
+    <a href="MiniGames.html" id="back-home-btn" class="hidden" title="Go back to Mini Games Home">Go Back to Mini Games Home</a>
+       </button>
+  </div>
+  </div>
+
+  <script>
+    // List of possible words for the game
+    const words = ["Cardio","Reps","Sets","HIIT","Superset","DOMS","PR","Progressive Overload","Core","Compound Exercise","Isolation Exercise","Circuit Training","Plyometrics","Mobility","Flexibility","Metabolism","BMI","Calisthenics","VO2 Max","Spotting","Macronutrients","Protein","Carbohydrates","Fats","Micronutrients","Meal Prep","Clean Eating","Calories","Caloric Deficit","Caloric Surplus","Lean Protein","Complex Carbs","Hydration","Electrolytes","Fiber","Glycemic Index","Nutrient-Dense","Pre-Workout Meal","Post-Workout Meal","Portion Control"];
+
+    // Randomly select a word from the list
+    let selectedWord = words[Math.floor(Math.random() * words.length)];
+    let guessedLetters = [];
+    let mistakes = 0;
+    const maxMistakes = 6;
+    let score = 0; // Score tracking
+const scoreDisplay = document.getElementById("score"); // Score DOM reference
+const playAgainBtn = document.getElementById("playAgainBtn"); // Play Again button
+
+
+    const wordDisplay = document.getElementById("wordDisplay");
+    const keyboard = document.getElementById("keyboard");
+    const status = document.getElementById("status");
+    const hangman = document.getElementById("hangman");
+
+    // Function to display the word with guessed letters
+    function updateWordDisplay() {
+      let display = selectedWord
+        .split("")
+        .map(letter => guessedLetters.includes(letter) ? letter : "_")
+        .join(" ");
+      wordDisplay.textContent = display;
+    }
+
+    // Function to check if the game is won
+function checkWin() {
+  if (!wordDisplay.textContent.includes("_")) {
+    status.textContent = "🎉 You won!";
+    score++; //  Increase score on win
+    scoreDisplay.textContent = `Score: ${score}`; // Update score display
+    disableAllButtons();
+    playAgainBtn.style.display = "block"; //  Show play again button
+  }
+}
+
+
+    // Function to check if the game is lost
+function checkLoss() {
+  if (mistakes >= maxMistakes) {
+    status.textContent = `💀 You lost! The word was: ${selectedWord}`;
+    disableAllButtons();
+    playAgainBtn.style.display = "block"; //  Show play again button
+  }
+}
+
+
+    // Function to disable all buttons after game over
+    function disableAllButtons() {
+      document.querySelectorAll("#keyboard button").forEach(button => button.disabled = true);
+    }
+
+    // Function to handle a guessed letter
+    function handleGuess(letter) {
+      if (!guessedLetters.includes(letter)) {
+        guessedLetters.push(letter);
+        document.getElementById(letter).disabled = true;
+
+        if (selectedWord.includes(letter)) {
+          updateWordDisplay();
+          checkWin();
+        } else {
+          mistakes++;
+          hangman.textContent = `Mistakes: ${mistakes}`;
+          checkLoss();
+        }
+      }
+    }
+
+// Reset the game function
+    function resetGame() {
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+  guessedLetters = [];
+  mistakes = 0;
+  hangman.textContent = `Mistakes: 0`;
+  status.textContent = "";
+  wordDisplay.textContent = "";
+  keyboard.innerHTML = "";
+  playAgainBtn.style.display = "none"; // ✅ Hide play again button
+  updateWordDisplay();
+  generateKeyboard();
+}
+
+
+    // Create on-screen keyboard
+    function generateKeyboard() {
+      const letters = "abcdefghijklmnopqrstuvwxyz";
+      letters.split("").forEach(letter => {
+        const btn = document.createElement("button");
+        btn.id = letter;
+        btn.textContent = letter;
+        btn.addEventListener("click", () => handleGuess(letter));
+        keyboard.appendChild(btn);
+      });
+    }
+
+    //Listen to keyboard input from the physical device
+document.addEventListener("keydown", (event) => {
+  const key = event.key.toLowerCase();
+  const isLetter = /^[a-z]$/.test(key);
+  if (isLetter && !guessedLetters.includes(key)) {
+    handleGuess(key);
+  }
+});
+
+// Listen for play again button click
+playAgainBtn.addEventListener("click", resetGame);
+
+
+    // Initialize the game
+    updateWordDisplay();
+    generateKeyboard();
+
+
+
+  </script>
+</body>
+</html>

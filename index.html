@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In/ Signup page</title>  <!--titling my page-->
+
+    <link rel="stylesheet" href="styling.css">  <!--linking my document to my CSS-->
+</head>
+<body>
+    <!--the main container storing the whole login page and register page -->
+    <div class="wrapper">
+      <!--container to hold the log in and sign up titles-->
+    <div class="title-text">
+      <!--when the log in form is active this title is shown-->
+    <div class="title login">Login Form</div>
+      <!--when the register form is active this title is shown-->
+    <div class="title signup">Signup Form</div>
+  </div>
+  <div class="form-container">
+   
+    <div class="slide-controls"> <!--Controls the feature allowing that slide transition from log in to sign up-->
+      <input type="radio" name="slide" id="login" checked>
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login">Login</label>
+      <label for="signup" class="slide signup">Signup</label>
+      <div class="slider-tab"></div>
+    </div>
+
+    <div class="form-inner"> <!--form made for the log in page which is the first thing the user sees when they use the application-->
+      <form action="home.html" class="login">
+       
+        <div class="field"> <!--field for email address input-->
+          <input type="text" placeholder="Email Address" required>
+        </div>
+       
+        <div class="field"> <!--field for their password they made when they signed up already-->
+          <input type="password" placeholder="Password" required>
+        </div>
+       
+        <div class="pass-link"><a href="#">Forgot password?</a></div>   <!--link to the sign up page-->
+       
+        <div class="field btn"> <!--field holding a button to submit the form data-->
+          <div class="btn-layer"></div>
+          <input type="submit" value="Login">
+       
+        </div>
+       <!--Qucik link to take a member to the sign up page if they have never signed up for the program before-->
+        <div class="signup-link">Not a member? <a href="#">Signup now</a></div> 
+      </form>
+
+
+      <form action="home.html" class="signup"> <!--the form that takes a user to the home page once they submit-->
+        
+        <div class="field"> <!--Register an email address to the field-->
+          <input type="text" placeholder="Email Address" required>
+        </div>  
+        
+        <div class="field"> <!--give a valid password for the registration-->
+          <input type="password" placeholder="Password" required>
+        </div>
+        
+        <div class="field"><!--retype the password to confirm thats the password you going with -->
+          <input type="password" placeholder="Confirm password" required>
+        </div>
+        
+        <div class="field btn"> <!--Button that submits whatever you inputted and registers your account-->
+          <div class="btn-layer"></div>
+          <input type="submit" value="Signup">
+        </div>
+      
+    </form> <!--end of the form-->
+    </div>
+  </div>
+</div>
+
+<script  src="Functionality.js"></script> <!--the link to wherever all the dynamic effects of elements are from-->
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--ensuring responsive designs-->
+        <title>GYM NAME</title>
+        <link rel="stylesheet" href="CSS/CSS Fitness Programs.css">
+
+    </head>
+    <header>
+      <div class="logo">LOGO</div>
+      <div class="a">
+        <nav>
+            <button class="button"><a href="home.html">Home</a></button>
+            <button class="button"><a href="Fitness Programs.html">Fitness</a></button>
+            <button class="button"><a href="Recipes.html">Food</a></button>
+            <button class="button"><a href="#Contact">Contact</a></button>
+            <button class="button"><a href="#Contact">?</a></button>
+            <button class="button"><a href="Community Chat.html"><img src="Images/CommunityLogo.png" width="50" height="50"/></a></button>
+        </nav>
+      </div>
+      </header>
+        <button id="topBtn" onclick="scrollToTop()">Back to Top</button>
+        <script>
+            function toggleSection(id) {
+              const section = document.getElementById(id);
+              const isHidden = section.style.display === "none" || section.style.display === "";
+              // Show section if hidden, then scroll to it
+              if (isHidden) {
+                section.style.display = "block";
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+              } else {
+                section.style.display = "none";
+              }
+            }
+                // Show the button when user scrolls down 200px
+                window.onscroll = function() {
+              const btn = document.getElementById("topBtn");
+              if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+              } else {
+                btn.style.display = "none";
+              }
+            };
+            // Scroll to top smoothly
+            function scrollToTop() {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+              });
+            }
+        </script>
+    </header>
+    <body>
+        <h1 class="container">Fitness Programs</h1>
+        <br/>
+        <div class="container">
+        <div class="text-box">
+        <table>
+            <tr>
+                <th>Workout 1:</th>
+                <td><button onclick="toggleSection('section1')"><img src="Images/Workout 1.jpeg" alt="Workout 1"/></button></td>
+                <th>Workout 2:</th>
+                <td><button onclick="toggleSection('section2')"><img src="Images/Workout 2.jpeg" alt="Workout 2"/></button></td>
+                <th>Workout 3:</th>
+                <td><button onclick="toggleSection('section3')"><img src="Images/Workout 3.jpeg" alt="Workout 3"/></button></td>
+            </tr>
+            <tr>
+                <th>Workout 4:</th>
+                <td><button onclick="toggleSection('section4')"><img src="Images/Workout 4.jpeg" alt="Workout 4"/></button></td>
+                <th>Workout 5:</th>
+                <td><button onclick="toggleSection('section5')"><img src="Images/Workout 5.jpeg" alt="Workout 5"/></button></td>
+                <th>Workout 6:</th>
+                <td><button onclick="toggleSection('section6')"><img src="Images/Workout 6.jpeg" alt="Workout 6"/></button></td>
+            </tr>
+        </table>
+        </div>
+        </div>
+
+
+        <!-- This section is a section that displays and hides the content with the images-->
+        <div id="section1" class="hidden-section">
+            <div class="container">
+                <div class="text-box">
+            <table>
+                <tr>
+                    <th rowspan="2"><h1>Workout 1</h1></th>
+                    <td class="WorkoutT">
+                        <h2>Day 1: Focus on Legs</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Glute Bridges</p>
+                        <p>Bulgerian Split Squads (each leg)</p>
+                        <p>High Knees 30 Seconds</p>
+                        <p>Wall Lunges</p>
+                        <p>Sumo Squats</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 2: Focus on Arms</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Bicep Curls</p>
+                        <p>Overhead Triceps Extension</p>
+                        <p>Diamond push-ups</p>
+                        <p>Isometric Bicep Hold: 30 seconds</p>
+                        <p>Arm Circles (forwards & backwards) 30 seconds</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 3: Focus on Back & Shoulder</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Reverse Snow Angels</p>
+                        <p>Superman Pull</p>
+                        <p>Towel Rows (use a towel around a door handle)</p>
+                        <p>Scapular Push-Ups</p>
+                        <p>Wall Angels</p>
+                    </td>
+                </tr>
+                <tr>
+                <td class="WorkoutT">
+                    <h2>Day 4: Focus on Chest</h2>
+                    <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                </br>
+                    <p>Chest Squeeze with towel</p>
+                    <p>Plyo Push-Ups (Clap Push-Ups if possible)</p>
+                    <p>Towel Chest Fly (use resistance with a towel)</p>
+                    <p>Explosive Wide Push-Ups</p>
+                    <p>Isometric Chest Press 30 Seconds</p>
+                </td>
+                <td></td>
+                <td class="WorkoutT">
+                    <h2>Day 5: Focus on Abs/Core</h2>
+                    <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                </br>
+                    <p>Plank with Shoulder Taps</p>
+                    <p>Bicycle Crunches</p>
+                    <p>Flutter Kicks</p>
+                    <p>Toe Touches</p>
+                    <p>V-Ups</p>
+                </td>
+                <td></td>
+                <td class="WorkoutT">
+                    <h2>Day 6: Focus on Rest Exercise</h2>
+                    <h3></h3>
+                </br>
+                    <p><iframe width="350" height="200" 
+                        src="https://www.bing.com/ck/a?!&&p=c71f743d29f9611dbcde813b40506160cd8c0b15fcad97d210bfd4110e97cc1bJmltdHM9MTc0NTU5NjM5Nw&ptn=3&fclid=67084581-21ed-11f0-9895-f15e056ec848&ntb=1&u=a1aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1BOEo1dGlPRUxfTSZudGI9MSZtc29ja2lkPTY3MDg0NTgxMjFlZDExZjA5ODk1ZjE1ZTA1NmVjODQ4" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                      </iframe></p>
+                </td>
+                </tr>
+            </table>
+            </div>
+            </div>
+        </br>
+        </br>
+            <table>
+                <tr>
+            <p>
+                <h2>Primary Goals with this workout Routine:</h2> 
+                <p class="text"> 
+                    <td class="WorkoutT">
+                       <h3>Muscle Toning & Strengthening:</h3>
+                       <p>Each day targets a specific muscle group (legs, arms, back/shoulders, chest, core) with structured, resistance-based exercises — great for toning and building lean muscle.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Progressive Overload Without Weights:</h3>
+                        <p>Using bodyweight variations, resistance bands, or household items (like towels and water bottles) helps simulate resistance training without needing a gym.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Improved Endurance & Conditioning:</h3>
+                        <p>Incorporating time-based exercises (like high knees, arm circles, plank taps) trains muscular and cardiovascular endurance.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Functional Fitness:</h3>
+                        <p>Movements like Bulgarian split squats, wall angels, towel rows, and plank shoulder taps enhance balance, mobility, posture, and core stabilization — key for daily activity strength.</p>
+                    </td> 
+                    <td class="WorkoutT">
+                        <h3>Convenience & Consistency:</h3>
+                        <p>All exercises can be done at home with little space, making the routine easy to follow consistently — which is essential for seeing real progress.</p>
+                    </td>  
+                    </tr>  
+                </p>
+            </p>
+            </table>
+        </div>
+        </br>
+        <div id="section2" class="hidden-section">
+        <div class="container">
+            <div class="text-box">
+                <table>
+                    <tr>
+                        <th rowspan="2"><h1>Workout 2: No Equipment Needed</h1></th>
+                        <td class="WorkoutT">
+                            <h2>Day 1: Focus on Legs</h2>
+                            <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                        </br>
+                            <p>Jump Squats</p>
+                            <p>Wall sit for 1 minute</p>
+                            <p>Glute Kickbacks both sides</p>
+                            <p>Sumo Squats</p>
+                            <p>Walking Lunges</p>
+                            <p>Standing calf raises</p>
+                            <p>Reverse Flutter Kicks for 1 minute</p>
+                        </td>
+                        <td></td>
+                        <td class="WorkoutT">
+                            <h2>Day 2: Focus on Arms</h2>
+                            <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                        </br>
+                            <p>Wall Puch-Ups</p>
+                            <p>Triceps Dips (using a chair/bench)</p>
+                            <p>Plank shoulder taps</p>
+                            <p>Arm Circles (30 secondss each direction)</p>
+                            <p>Isometric Biceps fles (squeeze fro 30 seconds)</p>
+                            <p>Diamond Push-Ups</p>
+                            <p>Slow negative push-ups</p>
+                        </td>
+                        <td></td>
+                        <td class="WorkoutT">
+                            <h2>Day 3: Focus on Back & Shoulder</h2>
+                            <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                        </br>
+                            <p>Superman holds</p>
+                            <p>Towel Rows (using a towel over a door)</p>
+                            <p>Arm pulses</p>
+                            <p>Swimmers</p>
+                            <p>Wall angels</p>
+                            <p>Downward dog cobra flow</p>
+                            <p>Child's pose</p>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td class="WorkoutT">
+                        <h2>Day 4: Focus on Chest</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Incline Push-ups</p>
+                        <p>Cross-body push-up taps</p>
+                        <p>Knee push-ups</p>
+                        <p>Wide push-ups</p>
+                        <p>Doorframe chest stretch</p>
+                        <p>Cobra stretch</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 5: Focus on Abs/Core</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Standing side crunches</p>
+                        <p>Bicycle Crunches</p>
+                        <p>Lying leg circels</p>
+                        <p>Elbow plank 30 seconds</p>
+                        <p>Mountain climbers 30 seconds</p>
+                        <p>Seated leg lifts</p>
+                        <p>Side plank 30 seconds (both sides)</p>
+                        <p>Spinal Twists</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 6: Focus on Rest Exercise</h2>
+                        <h3></h3>
+                    </br>
+                        <p><iframe width="350" height="200" 
+                            src="https://www.youtube.com/watch?v=-dCHrqndWYs&pp=ygUQcmVzdCBkYXkgd29ya291dNIHCQmECQGHKiGM7w%3D%3D" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                          </iframe></p>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </br>
+        <div class="container">
+            <div class="text-box">
+                <table>
+                <tr>
+                <p>
+                    <h2>Primary Goals with this workout Routine:</h2> 
+                    <p class="text"> 
+                        <td class="WorkoutT">
+                           <h3>Build Functional Strength Using Bodyweight:</h3>
+                           <p>Exercises like push-ups, squats, lunges, and planks strengthen major muscle groups without needing weights.
+                            Focuses on core, arms, legs, chest, back, and shoulders using only your body.</p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Improve Muscular Endurance & Toning:</h3>
+                            <p>Higher reps and isometric holds (like wall sits and planks) build stamina and define muscle tone.
+                                Helps sculpt lean muscle without bulking.</p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Boost Cardiovascular Fitness:</h3>
+                            <p>Movements like jump squats, mountain climbers, and walking lunges increase your heart rate and improve overall cardio health.</p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Increase Flexibility and Mobility:</h3>
+                            <p>Stretches like cobra, child’s pose, and spinal twists promote recovery, flexibility, and joint health.
+                                Enhances range of motion and posture.</p>
+                        </td> 
+                        <td class="WorkoutT">
+                            <h3>Maximize Convenience and Accessibility:</h3>
+                            <p>No equipment needed, perfect for:
+                                Traveling
+                                Small living spaces
+                                Beginners or those without access to a gym</p>
+                        </td> 
+                    </p>
+                </tr>
+                </p>
+            </table>
+        </div>
+        </div>
+        </div>
+        <div id="section3" class="hidden-section">
+            <div class="container">
+                <div class="text-box">
+                    <table>
+                        <tr>
+                            <th rowspan="2"><h1>Workout 3: Cardio Focused Workout</h1></th>
+                            <td class="WorkoutT">
+                                <h2>Day 1: Focus on Legs</h2>
+                                <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                            </br>
+                                <p>Jump Squats</p>
+                                <p>High Kness 30 seconds</p>
+                                <p>Skater Lunges</p>
+                                <p>Jumping lunges</p>
+                                <p>Wall sit pulses</p>
+                                <p>Fast toe taps 30 seconds</p>
+                                <p>Reverse flutter kicks</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h2>Day 2: Focus on Arms</h2>
+                                <h3>12 reps, 3 sets, 2 min rest between sets</h3>
+                            </br>
+                                <p>Punches with light weight 30 seconds</p>
+                                <p>Push-Up burpees</p>
+                                <p>Speedy tricep dips</p>
+                                <p>Plank up-downs</p>
+                                <p>Arm circles</p>
+                                <p>Jumping Jacks 30 seconds</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h2>Day 3: Focus on Back & Shoulders</h2>
+                                <h3>12 reps, 3 sets, 2 min rest between sets</h3>
+                            </br>
+                                <p>Jumping Jacks with shoulder taps</p>
+                                <p>Arm punches overhead</p>
+                                <p>Reverse snow angels</p>
+                                <p>Fast towel rows</p>
+                                <p>Superman flutter kicks</p>
+                                <p>Downward dog push-ups</p>
+                                <p>Child's pose</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="WorkoutT">
+                                <h2>Day 4: Focus on Chest</h2>
+                                <h3>12 reps, 3 sets, 2 min rest between sets</h3>
+                            </br>
+                                <p>Explosive push-ups</p>
+                                <p>Chest punches with resistance band</p>
+                                <p>Push-up pulses</p>
+                                <p>Fast incline push-ups</p>
+                                <p>Jumping Jacks 30 seconds</p>
+                                <p>Cobra Stretch</p>
+                                <p>Doorframe stretch</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h2>Day 5: Focus on Abs/Core</h2>
+                                <h3>12 reps, 3 sets, 2 min rest between sets</h3>
+                            </br>
+                                <p>Standing knee-to-elbow crunches</p>
+                                <p>Fast mountain climbers 30 seconds</p>
+                                <p>Plank jacks 30 seconds</p>
+                                <p>Flutter kicks</p>
+                                <p>Heel taps 303 seconds</p>
+                                <p>Russian twists</p>
+                                <p>Cobra stretch</p>
+                                <p>Lumbar twist</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h2>Day 6: Focus on rest exercise</h2>
+                                <h3></h3>
+                            </br>
+                            <p><iframe width="350" height="200"
+                                src="https://www.youtube.com/watch?v=WUKHM6-ekJM&pp=ygUQbW9iaWxpdHkgd29ya291dA%3D%3D" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                              </iframe></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </br>
+        <div class="container">
+            <div class="text-box">
+                <table>
+                <tr>
+                <p>
+                    <h2>Primary Goals with this workout Routine:</h2> 
+                    <p class="text"> 
+                        <td class="WorkoutT">
+                           <h3>Improve Cardiovascular Endurance</h3>
+                           <p>This routine is designed to keep your heart rate elevated throughout each session, helping to: 
+                            Boosts stamina and aerobic capacity. Improve blood circulation and heart health. Burn more calories during and after workouts (afterburn effect)</p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Maintain Full-Body Muscle Engagement</h3>
+                            <p>While cardio-focused, each day this workout still targets specific muscle groups (legs, arms, back, chest, and core), which helps:
+                                Build lean muscle. Improve muscular endurance. Tone and define your body.
+                            </p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Promote Fat Loss and Metabolisn Boost</h3>
+                            <p>High-intensity movements like jumps squats, burpees, and plank jacks combine cardio and strength training, making it excellent for:
+                                Fat burning. Increasing metabolic rate. Supporting weight management.
+                            </p>
+                        </td>
+                        <td class="WorkoutT">
+                            <h3>Enhances Functional Fitness</h3>
+                            <p>The dynamic, bodyweight-based exercises also help with:
+                                Coordination. Agility. Balance. Flexibility (with included stratches)
+                            </p>
+                        </td>  
+                    </p>
+                </tr>
+                </p>
+            </table>
+                </div>
+        </div>
+        </div>
+        <div id="section4" class="hidden-section">
+            <div class="container">
+                <div class="text-box">
+                    <table>
+                        <tr>
+                            <th rowspan="2"><h1>Workout 4: Mobility Focused</h1></th>
+                            <td>
+                                <h2>Day 1: Focus on Legs</h2>
+                                <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                            </br>
+                                <p>Deep Squat holds</p>
+                                <p>Toe taps</p>
+                                <p>Leg swings (forwards/back, left/right)</p>
+                                <p>Walking lunges with a twist</p>
+                                <p>Calf raises slow and controlled</p>
+                                <p>Seated forward fold</p>
+                                <p>Butterfly stretch</p>
+                            </td>
+                            <td>
+                                <h2>Day 2: Focus on Arms</h2>
+                                <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                            </br>
+                                <p>Arm circles</p>
+                                <p>Thread the needle (shoulder opener)</p>
+                                <p>Wrist mobility rolls</p>
+                                <p>Arm cross-body stretch</p>
+                                <p>Behind-the-back shoulder stretch</p>
+                                <p>Isometric all push</p>
+                                <p>Triceps stretch</p>
+                            </td>
+                            <td>
+                                <h2>Day 3: Focus on Back & Shoulders</h2>
+                                <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                            </br>
+                                <p>Cat-cow stretch</p>
+                                <p>Thread-the-needle stretch</p>
+                                <p>Y-T-W shoulder moves</p>
+                                <p>Resistance band shoulder openers</p>
+                                <p>Wall slides</p>
+                                <p>Child's pose</p>
+                                <p>Cobra stretch</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>Day 4: Focus on Chest</h2>
+                                <h3>12 reps, 3 set, 2-minte rest between</h3>
+                            </br>
+                                <p>Wall angels</p>
+                                <p>Arm openrtd (big chest swings)</p>
+                                <p>Pec minor stretch (hands behind head)</p>
+                                <p>Doorway stretch</p>
+                                <p>Prone shoulder opener</p>
+                                <p>Cobra Stretch</p>
+                                <p>Seated chest expansion</p>
+                            </td>
+                            <td>
+                                <h2>Day 5: Focus on Abs/Core</h2>
+                                <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                            </br>
+                                <p>Pelvic tilts</p>
+                                <p>Dead bug</p>
+                                <p>Bird-dog</p>
+                                <p>Seated spinal twist</p>
+                                <p>Cobra stretch</p>
+                                <p>Cat-cow stretch</p>
+                                <p>Supine twist (left/right)</p>
+                            </td>
+                            <td>
+                                <h2>Day 6: Rest day Exercises</h2>
+                                <h3></h3>
+                            </br>
+                                <p><iframe width="350" height="200"
+                                    src="https://www.youtube.com/watch?v=wjAYieMdQbQ&pp=ygUWbGlnaHQgY3ljbGluZyAgd29ya291dA%3D%3D" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                  </iframe></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </br>
+    </br>
+    <div class="container">
+        <div class="text-box">
+            <table>
+                <tr>
+                    <p>
+                        <h2>Primary Goals with this workout:</h2>
+                        <p class="text">
+                            <td class="WorkoutT">
+                                <h3> Improve Joint Flexibility & Range of Motion</h3>
+                                <p>Each day targets specific body areas (legs, arms, etc.) with movements designed to:
+                                    Loosen tight muscles
+                                    Increase flexibility
+                                    Enhance your ability to move joints through a full, healthy range of motion</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h3>Enhance Functional Mobility</h3>
+                                <p>This routine includes dynamic and isometric movements that:
+                                    Improve coordination and balance
+                                    Reinforce control through active ranges (like lunges with a twist, bird-dog, dead bug)
+                                    Promote better body mechanics during everyday activities and workouts</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h3>Aid in Recovery</h3>
+                                <p>Perfect for active recovery days:
+                                    Light intensity movement increases blood flow without taxing the body
+                                    Helps reduce soreness and stiffness from strength workouts (like your 5-day split)
+                                    Supports long-term injury prevention by maintaining soft tissue and joint health</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h3>Increase Mind-Muscle Connection</h3>
+                                <p>Slower, more controlled moves (e.g., calf raises, isometric wall push, seated folds) encourage:
+                                    Greater focus on muscle activation
+                                    Improved proprioception (awareness of body position in space)</p>
+                            </td>
+                            <td class="WorkoutT">
+                                <h3> Complement Strength Training</h3>
+                                <p>This routine helps:
+                                    Prevent imbalances that come from heavy lifting
+                                    Keep joints healthy and primed for more demanding workouts
+                                    Improve performance by ensuring your muscles move well and work together efficiently</p>
+                            </td>
+                        </p>
+                    </p>
+                </tr>
+            </table>
+        </div>
+    </div>
+        </div>
+        <div id="section5" class="hidden-section">
+            <div class="container">
+                <div class="text-box">
+                    <table>
+                        <tr>
+                            <th rowspan="2"><h1>Workout 5</h1></th>
+                                <td>
+                                    <h2>Day 1: Focus on Legs</h2>
+                                    <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                                </br>
+                                    <p>High knees 30 seconds</p>
+                                    <p>Goblet squats</p>
+                                    <p>Donkey kicks (left/right)</p>
+                                    <p>Curtsy lunges</p>
+                                    <p>Glute bridges</p>
+                                    <p>Side-lying lef lifts (left/right)</p>
+                                    <p>Wall sit with pulse 30 seconds</p>
+                                    <p>Standing calf raises<p></p>
+                                    <p>Step-ups (use a step or sturdy surface)</p>
+                                    <p>Standing hamstring curl (left/right)</p>
+                                </td>
+                                <td>
+                                    <h2>Day 2: Focus on Arms</h2>
+                                    <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                                </br>
+                                    <p>Bicep curls (with resistance bands or weights)</p>
+                                    <p>Diamond push-ups</p>
+                                    <p>Triceps kickbacks</p>
+                                    <p>Lateral raises</p>
+                                    <p>Shadow boxing (30 seconds)</p>
+                                    <p>Isometric arm hold (arms extended sideways, hold 30 seconds)</p>
+                                    <p>Pike push-ups</p>
+                                </td>
+                                <td>
+                                    <h2>Day 3: Focus on Back & Shoulders</h2>
+                                    <h3>12 reps, 3 sets, 2-minute rest between</h3>
+                                </br>
+                                    <p>Arm circles (forward/backward, 30 seconds)</p>
+                                    <p>Reverse flys (bands or light weights)</p>
+                                    <p>Supermans</p>
+                                    <p>Resistance band rows</p>
+                                    <p>Shoulder taps</p>
+                                    <p>Bent-over rows</p>
+                                    <p>T-raises</p>
+                                    <p>Child’s pose</p>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>Day 4: Focus on Chest</h2>
+                                <h3>12 reps, 3 set, 2-minute rest between</h3>
+                            </br>
+                                <p>Chest flys (band or weights)</p>
+                                <p>Push-ups with shoulder taps</p>
+                                <p>Incline push-ups</p>
+                                <p>Isometric chest press (press palms together)</p>
+                                <p>Explosive push-ups (clap or just lift hands slightly)</p>
+                                <p>Doorframe chest stretch</p>
+                                <p>Cobra stretch</p>
+                            </td>
+                            <td>
+                                <h2>Day 5: Focus on Abs/Core</h2>
+                                <h3>12 reps, 3 set, 2-minute rest between</h3>
+                            </br>
+                                <p>Plank jacks: 30 seconds</p>
+                                <p>Seated in-and-outs</p>
+                                <p>Flutter kicks</p>
+                                <p>Plank to toe touches</p>
+                                <p>Bicycle crunches</p>
+                                <p>Side plank dips (left/right)</p>
+                                <p>Dead bugs</p>
+                                <p>Windshield wipers</p>
+                                <p>Mountain climbers: 30 seconds</p>
+                                <p>Cobra stretch</p>
+                                <p>Spinal twist (both sides)</p>
+                            </td>
+                            <td>
+                                <h2>Day 6: Rest exercises</h2>
+                                <h3></h3>
+                            </br>
+                                <p><iframe width="350" height="200"
+                                    src="https://www.youtube.com/watch?v=P5sPzI6ME0E&pp=ygUQc3dpbW1pbmcgd29ya291dA%3D%3D" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                  </iframe></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </br>
+        <div class="container">
+            <div class="text-box">
+                <table>
+                    <p>
+                        <tr>
+                            <h2>Primary Goals with this workout:</h2>
+                            <p class="text">
+                                <td class="WorkoutT">
+                                    <h3>Build Lean Muscle & Definition</h3>
+                                    <p>Each day targets specific muscle groups (legs, arms, back/shoulders, chest, core) to:
+                                        Promote muscle toning and shaping
+                                        Encourage balanced muscle development
+                                        Help increase muscular endurance over time</p>
+                                </td>
+                                <td class="WorkoutT">
+                                    <h3>Improve Muscular Endurance & Stamina</h3>
+                                    <p>The inclusion of timed exercises (e.g., high knees, shadow boxing, plank jacks) and bodyweight resistance:
+                                        Boosts aerobic capacity
+                                        Enhances your ability to sustain activity
+                                        Trains muscles to perform longer without fatigue</p>
+                                </td>
+                                <td class="WorkoutT">
+                                    <h3>Enhance Functional Strength</h3>
+                                    <p>Movements like step-ups, rows, bridges, and curtsy lunges:
+                                        Mimic real-life movement patterns
+                                        Improve stability, balance, and control
+                                        Support overall athleticism and injury prevention</p>
+                                </td>
+                                <td class="WorkoutT">
+                                    <h3>Burn Calories & Boost Metabolism</h3>
+                                    <p>With full-body engagement and tempo-based exercises (especially in the core and chest days):
+                                        Raises heart rate
+                                        Encourages fat burning
+                                        Helps improve metabolic efficiency (great for body recomposition)</p>
+                                </td>
+                                <td class="WorkoutT">
+                                    <h3>Improve Mind-Muscle Connection & Control</h3>
+                                    <p>Exercises like donkey kicks, isometric holds, and slow, controlled reps:
+                                        Train better body awareness
+                                        Improve neuromuscular coordination
+                                        Promote focused form and technique</p>
+                                </td>
+                                <td class="WorkoutT">
+                                    <h3>Complement Recovery & Flexibility</h3>
+                                    <p>Finishing some sessions with poses like Cobra Stretch, Child’s Pose, or Spinal Twists:
+                                        Helps release tension
+                                        Supports mobility and recovery
+                                        Enhances flexibility in worked areas</p>
+                                </td>
+                            </p>
+                        </tr>
+                    </p>
+                </table>
+            </div>
+        </div>
+        </div>
+        <div id="section6" class="hidden-section">
+            <div class="container">
+                <div class="text-box">
+            <table>
+                <tr>
+                    <th rowspan="2"><h1>Workout 6</h1></th>
+                    <td class="WorkoutT">
+                        <h2>Day 1: Focus on Legs</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Glute Bridges</p>
+                        <p>Bulgerian Split Squads (each leg)</p>
+                        <p>High Knees 30 Seconds</p>
+                        <p>Wall Lunges</p>
+                        <p>Sumo Squats</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 2: Focus on Arms</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Bicep Curls</p>
+                        <p>Overhead Triceps Extension</p>
+                        <p>Diamond push-ups</p>
+                        <p>Isometric Bicep Hold: 30 seconds</p>
+                        <p>Arm Circles (forwards & backwards) 30 seconds</p>
+                    </td>
+                    <td></td>
+                    <td class="WorkoutT">
+                        <h2>Day 3: Focus on Back & Shoulder</h2>
+                        <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                    </br>
+                        <p>Reverse Snow Angels</p>
+                        <p>Superman Pull</p>
+                        <p>Towel Rows (use a towel around a door handle)</p>
+                        <p>Scapular Push-Ups</p>
+                        <p>Wall Angels</p>
+                    </td>
+                </tr>
+                <tr>
+                <td class="WorkoutT">
+                    <h2>Day 4: Focus on Chest</h2>
+                    <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                </br>
+                    <p>Chest Squeeze with towel</p>
+                    <p>Plyo Push-Ups (Clap Push-Ups if possible)</p>
+                    <p>Towel Chest Fly (use resistance with a towel)</p>
+                    <p>Explosive Wide Push-Ups</p>
+                    <p>Isometric Chest Press 30 Seconds</p>
+                </td>
+                <td></td>
+                <td class="WorkoutT">
+                    <h2>Day 5: Focus on Abs/Core</h2>
+                    <h3>12 reps, 3 sets, 2  min rest between sets</h3>
+                </br>
+                    <p>Plank with Shoulder Taps</p>
+                    <p>Bicycle Crunches</p>
+                    <p>Flutter Kicks</p>
+                    <p>Toe Touches</p>
+                    <p>V-Ups</p>
+                </td>
+                <td></td>
+                <td class="WorkoutT">
+                    <h2>Day 6: Focus on Rest Exercise</h2>
+                    <h3></h3>
+                </br>
+                    <p><iframe width="350" height="200" 
+                        src="https://www.bing.com/ck/a?!&&p=c71f743d29f9611dbcde813b40506160cd8c0b15fcad97d210bfd4110e97cc1bJmltdHM9MTc0NTU5NjM5Nw&ptn=3&fclid=67084581-21ed-11f0-9895-f15e056ec848&ntb=1&u=a1aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1BOEo1dGlPRUxfTSZudGI9MSZtc29ja2lkPTY3MDg0NTgxMjFlZDExZjA5ODk1ZjE1ZTA1NmVjODQ4" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                      </iframe></p>
+                </td>
+                </tr>
+            </table>
+            </div>
+            </div>
+        </br>
+        </br>
+            <table>
+                <tr>
+            <p>
+                <h2>Primary Goals with this workout Routine:</h2> 
+                <p class="text"> 
+                    <td class="WorkoutT">
+                       <h3>Muscle Toning & Strengthening:</h3>
+                       <p>Each day targets a specific muscle group (legs, arms, back/shoulders, chest, core) with structured, resistance-based exercises — great for toning and building lean muscle.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Progressive Overload Without Weights:</h3>
+                        <p>Using bodyweight variations, resistance bands, or household items (like towels and water bottles) helps simulate resistance training without needing a gym.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Improved Endurance & Conditioning:</h3>
+                        <p>Incorporating time-based exercises (like high knees, arm circles, plank taps) trains muscular and cardiovascular endurance.</p>
+                    </td>
+                    <td class="WorkoutT">
+                        <h3>Functional Fitness:</h3>
+                        <p>Movements like Bulgarian split squats, wall angels, towel rows, and plank shoulder taps enhance balance, mobility, posture, and core stabilization — key for daily activity strength.</p>
+                    </td> 
+                    <td class="WorkoutT">
+                        <h3>Convenience & Consistency:</h3>
+                        <p>All exercises can be done at home with little space, making the routine easy to follow consistently — which is essential for seeing real progress.</p>
+                    </td>  
+                    </tr>  
+                </p>
+            </p>
+            </table>
+        </div>
+    </body>
+</html>
