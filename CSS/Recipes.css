@@ -1,8 +1,13 @@
+/* this is the background of the page and the general layout*/
 body {
-    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    height: 100%;
     margin: 0;
-    ;
-  }
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
 
   a {
     color: black;
@@ -30,9 +35,11 @@ nav {
     border: none;
     background-color: transparent;
     font-weight: 300;
-    font-size: large;
+    font-size: large;
 
 }
+
+
 
   main {
     padding: 15px;
@@ -168,3 +175,26 @@ nav {
     margin: 5px 0;
     font-size: 14px;
   }
+
+          /* --- Theme Variables for Light/Dark Mode --- */
+    :root {
+      --bg-color: #f0f8ff;
+      --text-color: #000;
+      --card-color: white;
+      --primary-color: #4d5cdf;
+      --primary-dark: #4d5cdf;
+      --option-bg: #e3f2fd;
+      --option-hover: #bbdefb;
+      --correct-color: #a1e3a1;
+      --correct-border: #2e7d32;
+      --wrong-color: #f5a1a1;
+      --wrong-border: #c62828;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --card-color: #1e1e1e;
+      --option-bg: #263238;
+      --option-hover: #455a64;
+    }
